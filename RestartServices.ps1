@@ -1,7 +1,7 @@
 ﻿# Restart engines
 # Version 1.1
 #
-# bug retries count down needs looking into - it might be retrying for the amount of time specified.
+# bug: Retries count down needs looking into 
 
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
