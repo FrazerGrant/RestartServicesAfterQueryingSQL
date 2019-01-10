@@ -94,7 +94,7 @@ test
 
 This function connects to the selected SQL server, runs a T-SQL to find out if there are any manifests queued or being processed.
 
-2 parameters are used.  1 for selecting the server, the other one to select the AthenaEngine.  
+2 parameters are used.  1 for selecting the server, the other one to select the Engine.  
 
 The function will then remotely connect to the server using integrated authentication, so make sure the user has necessary rights.
 
@@ -145,7 +145,7 @@ $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
 $SqlConnection.ConnectionString = "Server=$server;Database=$Database;Integrated Security=True"
 write-host $SqlConnection.ConnectionString
 $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
-$SqlCmd.CommandText = "select * from ImportManifestLog where EngineProcessID = $engine AND processingStatusID in (1,2,3) and DownloadDate >=  CAST (getdate() as DATE)"
+$SqlCmd.CommandText = "select * from ImportLog where EngineID = $engine AND processingStatusID in (1,2,3) and DownloadDate >=  CAST (getdate() as DATE)"
 $SqlCmd.Connection = $SqlConnection
 $SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
 $SqlAdapter.SelectCommand = $SqlCmd
